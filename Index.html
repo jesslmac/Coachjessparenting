@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="description" content="Coach Jess — Parenting Coach. Ancient wisdom for modern moms raising calm, confident, capable kids.">
+<meta property="og:title" content="Coach Jess · Parenting Coach">
+<meta property="og:description" content="Ancient wisdom for modern moms raising calm, confident, capable kids.">
+<meta property="og:image" content="https://coachjessparenting.github.io/preview.jpg">
+<title>Coach Jess · Parenting Coach</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=Dancing+Script:wght@600;700&family=Cormorant+Garamond:ital,wght@1,300;1,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:#F7F2EA; --brown:#3D2B1F; --terra:#C4622D; --terra-l:#E8896A;
+  --sage:#8A9E7C; --sage-d:#5C7050; --rose:#D4907F; --rose-l:#EEDBD8;
+  --gold:#C8A96E; --gold-l:#F0E0C0; --mist:#EDE8E0; --off:#FBF8F3; --ink:#1C1510;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+body{background:var(--brown);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;}
+
+/* ── BACKGROUND ── */
+.bg-wrap{position:fixed;inset:0;z-index:0;background:var(--brown);overflow:hidden;}
+.bg-orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.45;}
+.orb1{width:420px;height:420px;background:var(--terra);top:-100px;left:-100px;animation:drift1 20s ease-in-out infinite alternate;}
+.orb2{width:320px;height:320px;background:var(--sage);bottom:-80px;right:-80px;animation:drift2 24s ease-in-out infinite alternate;}
+.orb3{width:260px;height:260px;background:var(--rose);top:40%;left:50%;transform:translate(-50%,-50%);animation:drift1 16s ease-in-out infinite alternate-reverse;}
+@keyframes drift1{0%{transform:translate(0,0)}100%{transform:translate(55px,38px)}}
+@keyframes drift2{0%{transform:translate(0,0)}100%{transform:translate(-45px,-28px)}}
+.bg-wrap::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");background-size:180px;pointer-events:none;opacity:.6;}
+
+/* ── FADE-IN ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade{opacity:0;animation:fadeUp .65s cubic-bezier(.22,.68,0,1.2) forwards;}
+.d1{animation-delay:.08s}.d2{animation-delay:.18s}.d3{animation-delay:.28s}.d4{animation-delay:.38s}
+.d5{animation-delay:.48s}.d6{animation-delay:.58s}.d7{animation-delay:.68s}.d8{animation-delay:.78s}
+.d9{animation-delay:.88s}.d10{animation-delay:.98s}.d11{animation-delay:1.08s}.d12{animation-delay:1.18s}
+
+/* ── PAGE SHELL ── */
+.page{position:relative;z-index:1;max-width:480px;margin:0 auto;padding:0 18px 72px;}
+
+/* ── HEADER ── */
+.header{padding:52px 0 28px;text-align:center;}
+.avatar-ring{width:104px;height:104px;border-radius:50%;background:linear-gradient(135deg,var(--terra),var(--rose),var(--gold));padding:3px;margin:0 auto 18px;box-shadow:0 8px 32px rgba(196,98,45,.4);}
+.avatar-inner{width:100%;height:100%;border-radius:50%;overflow:hidden;background:var(--brown);}
+.avatar-inner img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.avatar-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Dancing Script',cursive;font-size:44px;font-weight:700;color:var(--cream);}
+.brand-name{font-family:'Dancing Script',cursive;font-size:44px;font-weight:700;color:var(--cream);line-height:1;margin-bottom:4px;}
+.brand-name span{color:var(--terra-l);}
+.handle{font-size:12px;color:rgba(247,242,234,.4);letter-spacing:1.5px;margin-bottom:14px;}
+.tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--gold-l);line-height:1.45;margin-bottom:18px;padding:0 10px;}
+.bio-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;}
+.chip{background:rgba(247,242,234,.1);border:1px solid rgba(247,242,234,.18);color:rgba(247,242,234,.8);font-size:11px;padding:5px 13px;border-radius:30px;letter-spacing:.3px;}
+
+/* ── SECTION LABEL ── */
+.section-label{text-align:center;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(247,242,234,.3);margin:28px 0 12px;display:flex;align-items:center;gap:12px;}
+.section-label::before,.section-label::after{content:'';flex:1;height:1px;background:rgba(247,242,234,.08);}
+
+/* ── BUTTONS ── */
+.links{display:flex;flex-direction:column;gap:11px;}
+.link-btn{display:flex;align-items:center;gap:14px;padding:17px 20px;border-radius:16px;text-decoration:none;cursor:pointer;border:none;width:100%;text-align:left;position:relative;overflow:hidden;transition:transform .18s cubic-bezier(.22,.68,0,1.4),box-shadow .18s ease;-webkit-tap-highlight-color:transparent;font-family:'DM Sans',sans-serif;}
+.link-btn:hover{transform:translateY(-2px) scale(1.01);}
+.link-btn:active{transform:scale(.97);}
+
+/* Button variants */
+.btn-hero{background:var(--terra);box-shadow:0 8px 28px rgba(196,98,45,.45);color:var(--cream);}
+.btn-hero:hover{box-shadow:0 12px 36px rgba(196,98,45,.6);}
+.btn-dark{background:rgba(28,21,16,.65);border:1px solid rgba(247,242,234,.1);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:var(--cream);}
+.btn-dark:hover{border-color:rgba(247,242,234,.22);}
+.btn-sage{background:var(--sage-d);box-shadow:0 6px 22px rgba(92,112,80,.35);color:var(--cream);}
+.btn-sage:hover{box-shadow:0 10px 30px rgba(92,112,80,.5);}
+.btn-rose{background:var(--rose);box-shadow:0 6px 22px rgba(212,144,127,.35);color:var(--cream);}
+.btn-rose:hover{box-shadow:0 10px 30px rgba(212,144,127,.5);}
+.btn-gold{background:rgba(200,169,110,.13);border:1px solid rgba(200,169,110,.5);color:var(--gold-l);}
+.btn-gold:hover{background:rgba(200,169,110,.22);}
+.btn-glass{background:rgba(247,242,234,.07);border:1px solid rgba(247,242,234,.12);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--cream);}
+.btn-glass:hover{background:rgba(247,242,234,.13);}
+
+.btn-icon{font-size:22px;flex-shrink:0;width:42px;height:42px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:rgba(255,255,255,.1);}
+.btn-text{flex:1;}
+.btn-title{font-weight:600;font-size:15px;line-height:1.25;margin-bottom:2px;}
+.btn-sub{font-size:12px;opacity:.68;line-height:1.35;}
+.btn-arrow{font-size:17px;opacity:.45;flex-shrink:0;transition:transform .2s,opacity .2s;}
+.link-btn:hover .btn-arrow{transform:translateX(4px);opacity:.8;}
+
+/* Badges */
+.badge-free{position:absolute;top:-1px;right:16px;background:var(--gold);color:var(--brown);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border-radius:0 0 8px 8px;}
+.price-pill{background:rgba(255,255,255,.15);border-radius:20px;padding:3px 11px;font-size:11px;font-weight:700;white-space:nowrap;flex-shrink:0;letter-spacing:.3px;}
+
+/* ── ABOUT CARD ── */
+.about-card{background:rgba(247,242,234,.07);border:1px solid rgba(247,242,234,.1);border-radius:16px;padding:24px 22px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
+.about-card p{font-size:14px;line-height:1.8;color:rgba(247,242,234,.8);}
+.about-card p+p{margin-top:10px;}
+.about-em{color:var(--terra-l);font-style:italic;}
+
+/* ── TESTIMONIAL ── */
+.testi-card{background:rgba(247,242,234,.07);border:1px solid rgba(247,242,234,.12);border-radius:16px;padding:22px 20px;}
+.testi-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--gold-l);line-height:1.6;margin-bottom:14px;}
+.testi-quote::before{content:'\201C';font-size:52px;line-height:.6;color:var(--terra-l);opacity:.5;display:block;margin-bottom:6px;font-family:'Playfair Display',serif;}
+.testi-author{display:flex;align-items:center;gap:10px;}
+.testi-dot{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--terra),var(--rose));display:flex;align-items:center;justify-content:center;font-size:13px;color:white;font-weight:600;flex-shrink:0;}
+.testi-name{font-size:13px;font-weight:600;color:var(--cream);}
+.testi-desc{font-size:11px;color:rgba(247,242,234,.45);margin-top:1px;}
+
+/* ── SOCIAL ROW ── */
+.social-row{display:flex;justify-content:center;gap:12px;margin-top:4px;}
+.social-btn{width:46px;height:46px;border-radius:12px;background:rgba(247,242,234,.08);border:1px solid rgba(247,242,234,.12);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:20px;transition:background .2s,transform .18s;-webkit-tap-highlight-color:transparent;}
+.social-btn:hover{background:rgba(247,242,234,.15);transform:translateY(-2px);}
+
+/* ── FOOTER ── */
+.foot{text-align:center;margin-top:44px;padding-top:26px;border-top:1px solid rgba(247,242,234,.07);}
+.foot-logo{font-family:'Dancing Script',cursive;font-size:26px;color:var(--cream);margin-bottom:5px;}
+.foot-logo span{color:var(--terra-l);}
+.foot-tag{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:rgba(247,242,234,.4);margin-bottom:10px;}
+.foot-note{font-size:10px;color:rgba(247,242,234,.18);letter-spacing:.5px;}
+
+/* ── MODAL ── */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(28,21,16,.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);align-items:flex-end;justify-content:center;padding:0;}
+.modal-overlay.open{display:flex;}
+.modal-box{background:var(--off);border-radius:24px 24px 0 0;width:100%;max-width:480px;padding:28px 22px 52px;position:relative;animation:slideUp .3s cubic-bezier(.22,.68,0,1.2) forwards;}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.modal-handle{width:40px;height:4px;border-radius:2px;background:rgba(61,43,31,.18);margin:0 auto 22px;}
+.modal-eyebrow{display:inline-block;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;padding:4px 12px;border-radius:20px;margin-bottom:12px;}
+.ey-free{background:var(--sage-d);color:white;}
+.ey-paid{background:var(--terra);color:white;}
+.ey-waitlist{background:var(--brown);color:var(--cream);}
+.modal-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--brown);margin-bottom:5px;line-height:1.2;}
+.modal-price{font-size:12px;color:var(--terra);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;}
+.modal-desc{font-size:14px;color:rgba(61,43,31,.68);line-height:1.75;margin-bottom:18px;}
+.modal-includes{list-style:none;margin-bottom:20px;}
+.modal-includes li{display:flex;gap:10px;font-size:13.5px;color:var(--brown);padding:9px 0;border-bottom:1px solid rgba(61,43,31,.07);line-height:1.4;}
+.modal-includes li:last-child{border-bottom:none;}
+.modal-includes li::before{content:'✓';color:var(--sage-d);font-weight:700;flex-shrink:0;margin-top:1px;}
+.modal-cta{display:block;width:100%;font-size:16px;font-weight:600;border:none;border-radius:14px;padding:18px;cursor:pointer;text-align:center;text-decoration:none;font-family:'DM Sans',sans-serif;transition:transform .15s,box-shadow .15s;}
+.modal-cta:hover{transform:translateY(-1px);}
+.cta-terra{background:var(--terra);color:white;box-shadow:0 8px 24px rgba(196,98,45,.4);}
+.cta-terra:hover{box-shadow:0 12px 32px rgba(196,98,45,.5);}
+.cta-sage{background:var(--sage-d);color:white;box-shadow:0 6px 20px rgba(92,112,80,.35);}
+.cta-rose{background:var(--rose);color:white;box-shadow:0 6px 20px rgba(212,144,127,.35);}
+.cta-brown{background:var(--brown);color:var(--cream);box-shadow:0 6px 20px rgba(28,21,16,.3);}
+.modal-close{position:absolute;top:18px;right:18px;width:32px;height:32px;border-radius:50%;background:rgba(61,43,31,.08);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--brown);transition:background .2s;}
+.modal-close:hover{background:rgba(61,43,31,.15);}
+.email-form{display:flex;flex-direction:column;gap:10px;}
+.email-input{border:1.5px solid rgba(61,43,31,.14);border-radius:12px;padding:15px 17px;font-size:15px;font-family:'DM Sans',sans-serif;color:var(--brown);background:white;outline:none;transition:border-color .2s;width:100%;}
+.email-input:focus{border-color:var(--terra);}
+.email-input::placeholder{color:rgba(61,43,31,.33);}
+.email-note{font-size:11px;color:rgba(61,43,31,.38);text-align:center;margin-top:2px;}
+.or-divider{display:flex;align-items:center;gap:10px;margin:8px 0;color:rgba(61,43,31,.3);font-size:12px;}
+.or-divider::before,.or-divider::after{content:'';flex:1;height:1px;background:rgba(61,43,31,.1);}
+
+@media(min-width:481px){
+  .modal-overlay{align-items:center;padding:20px;}
+  .modal-box{border-radius:24px;max-height:92vh;overflow-y:auto;}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-wrap">
+  <div class="bg-orb orb1"></div>
+  <div class="bg-orb orb2"></div>
+  <div class="bg-orb orb3"></div>
+</div>
+
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <div class="header">
+    <div class="avatar-ring fade d1">
+      <div class="avatar-inner">
+        <!-- SWAP: replace the src below with your hosted photo URL once on GitHub -->
+        <img src="jess.jpg" alt="Coach Jess" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="avatar-fallback" style="display:none">J</div>
+      </div>
+    </div>
+    <div class="brand-name fade d2">Coach <span>Jess</span></div>
+    <div class="handle fade d2">@coachjessparenting</div>
+    <div class="tagline fade d3">Ancient wisdom. Modern motherhood.<br>A calmer home.</div>
+    <div class="bio-chips fade d3">
+      <span class="chip">🌿 Parenting Coach</span>
+      <span class="chip">Positive Discipline Certified</span>
+      <span class="chip">Mom of 4 👯</span>
+    </div>
+  </div>
+
+  <!-- ── FREE RESOURCE ── -->
+  <div class="section-label fade d4">Start Here — It's Free</div>
+  <div class="links">
+    <button class="link-btn btn-hero fade d4" onclick="openModal('freebie')">
+      <div class="badge-free">Free</div>
+      <div class="btn-icon">🌿</div>
+      <div class="btn-text">
+        <div class="btn-title">The 5 Ancient Parenting Tools</div>
+        <div class="btn-sub">Free guide — instant download</div>
+      </div>
+      <div class="btn-arrow">→</div>
+    </button>
+  </div>
+
+  <!-- ── SHOP ── -->
+  <div class="section-label fade d5">Shop</div>
+  <div class="links">
+
+    <!-- LOW TICKET — links directly to Stan Store checkout -->
+    <a href="https://coachjessparenting.stan.store/product/stop-the-yelling-cycle"
+       target="_blank" rel="noopener"
+       class="link-btn btn-dark fade d5">
+      <div class="btn-icon">🔥</div>
+      <div class="btn-text">
+        <div class="btn-title">Stop the Yelling Cycle</div>
+        <div class="btn-sub">The Inuit method that actually works</div>
+      </div>
+      <span class="price-pill">$17</span>
+    </a>
+
+    <!-- COURSE — waitlist modal -->
+    <button class="link-btn btn-dark fade d6" onclick="openModal('course')">
+      <div class="btn-icon">📚</div>
+      <div class="btn-text">
+        <div class="btn-title">The Family Team Method</div>
+        <div class="btn-sub">The full paradigm-shifting program</div>
+      </div>
+      <span class="price-pill">Join Waitlist</span>
+    </button>
+
+  </div>
+
+  <!-- ── WORK WITH ME ── -->
+  <div class="section-label fade d7">Work With Me</div>
+  <div class="links">
+
+    <button class="link-btn btn-sage fade d7" onclick="openModal('coaching')">
+      <div class="btn-icon">🧡</div>
+      <div class="btn-text">
+        <div class="btn-title">1:1 Coaching — Join the Waitlist</div>
+        <div class="btn-sub">Personalised support for your family</div>
+      </div>
+      <div class="btn-arrow">→</div>
+    </button>
+
+    <button class="link-btn btn-rose fade d8" onclick="openModal('cohort')">
+      <div class="btn-icon">✨</div>
+      <div class="btn-text">
+        <div class="btn-title">Group Cohort — Interest List</div>
+        <div class="btn-sub">Live sessions + community support</div>
+      </div>
+      <div class="btn-arrow">→</div>
+    </button>
+
+  </div>
+
+  <!-- ── MORE ── -->
+  <div class="section-label fade d9">More From Jess</div>
+  <div class="links">
+
+    <a href="https://instagram.com/coachjessparenting" target="_blank" rel="noopener"
+       class="link-btn btn-glass fade d9">
+      <div class="btn-icon">📱</div>
+      <div class="btn-text">
+        <div class="btn-title">Follow on Instagram</div>
+        <div class="btn-sub">Daily wisdom, real mom moments, free tips</div>
+      </div>
+      <div class="btn-arrow">→</div>
+    </a>
+
+    <button class="link-btn btn-gold fade d10" onclick="openModal('email')">
+      <div class="btn-icon">💌</div>
+      <div class="btn-text">
+        <div class="btn-title">Join the Weekly Newsletter</div>
+        <div class="btn-sub">Ancient wisdom in your inbox every week</div>
+      </div>
+      <div class="btn-arrow">→</div>
+    </button>
+
+  </div>
+
+  <!-- ── ABOUT ── -->
+  <div class="section-label fade d10">About Jess</div>
+  <div class="about-card fade d10">
+    <p>Hey, I'm Jess — <span class="about-em">a mom of four (yes, including twins 👯)</span>, Certified Parenting Educator, and the person who used to yell at her kids and feel terrible about it every single time.</p>
+    <p>After teaching in schools in Thailand, struggling through every parenting transition, and eventually discovering <span class="about-em">Hunt, Gather, Parent</span> — everything changed. I went from surviving to genuinely thriving. Now I teach mamas the same shift.</p>
+    <p>You were never meant to do this alone. <span class="about-em">Let's change that.</span> 🧡</p>
+  </div>
+
+  <!-- ── TESTIMONIAL ── -->
+  <div class="section-label fade d11">Kind Words</div>
+  <div class="testi-card fade d11">
+    <div class="testi-quote">I downloaded Jess's free guide on a Tuesday night. By Thursday morning our entire routine had shifted. I didn't think something this simple could actually work.</div>
+    <div class="testi-author">
+      <div class="testi-dot">S</div>
+      <div>
+        <div class="testi-name">Sarah M.</div>
+        <div class="testi-desc">Mom of 3</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SOCIALS ── -->
+  <div class="section-label fade d12">Find Me</div>
+  <div class="social-row fade d12">
+    <a href="https://instagram.com/coachjessparenting" target="_blank" rel="noopener" class="social-btn" title="Instagram">📷</a>
+    <a href="#" class="social-btn" title="TikTok">🎵</a>
+    <a href="#" class="social-btn" title="Facebook">👤</a>
+    <a href="#" class="social-btn" title="Pinterest">📌</a>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div class="foot fade d12">
+    <div class="foot-logo">Coach <span>Jess</span></div>
+    <div class="foot-tag">Ancient wisdom for modern moms raising calm, confident, capable kids.</div>
+    <div class="foot-note">© Coach Jess · @coachjessparenting</div>
+  </div>
+
+</div><!-- /page -->
+
+
+<!-- ══════════════════════════════════════
+  MODALS
+══════════════════════════════════════ -->
+
+<!-- FREEBIE — email capture, links to Kit form -->
+<div class="modal-overlay" id="modal-freebie" onclick="closeOnBackdrop(event)">
+  <div class="modal-box">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal('freebie')">✕</button>
+    <span class="modal-eyebrow ey-free">100% Free</span>
+    <div class="modal-title">The 5 Ancient Parenting Tools</div>
+    <div class="modal-price">Instant Download · No credit card needed</div>
+    <div class="modal-desc">Five tools used by Maya, Inuit, and Hadzabe parents for thousands of years — simplified for your home today.</div>
+    <ul class="modal-includes">
+      <li>The ancient alternative to yelling (Inuit method)</li>
+      <li>How to raise a helper without asking twice</li>
+      <li>The calm tool that replaces timeouts</li>
+      <li>3 word-for-word scripts for hard moments</li>
+      <li>The TEAM framework overview</li>
+    </ul>
+    <!-- SWAP: replace this href with your Kit.com form embed URL -->
+    <a href="https://coachjessparenting.kit.com/freebie" target="_blank" rel="noopener"
+       class="modal-cta cta-terra">Get My Free Guide 🌿</a>
+    <p class="email-note" style="margin-top:12px">No spam. Unsubscribe any time. Pinky promise. 🤍</p>
+  </div>
+</div>
+
+<!-- COURSE WAITLIST -->
+<div class="modal-overlay" id="modal-course" onclick="closeOnBackdrop(event)">
+  <div class="modal-box">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal('course')">✕</button>
+    <span class="modal-eyebrow ey-waitlist">Coming Soon</span>
+    <div class="modal-title">The Family Team Method</div>
+    <div class="modal-price">Join the waitlist — be first + get founding member pricing</div>
+    <div class="modal-desc">The complete paradigm-shifting program. Hunt, Gather, Parent meets Positive Discipline meets the lived experience of a mom of four. This changes everything.</div>
+    <ul class="modal-includes">
+      <li>Module 1: Why we parent WEIRD — and how to stop</li>
+      <li>Module 2: The TEAM Framework in your real life</li>
+      <li>Module 3: The Full Tool Belt — a tool for every situation</li>
+      <li>Module 4: Building your unique family culture</li>
+      <li>Workbooks, scripts, and community access</li>
+    </ul>
+    <!-- SWAP: replace with your Kit.com waitlist form URL -->
+    <a href="https://coachjessparenting.kit.com/course-waitlist" target="_blank" rel="noopener"
+       class="modal-cta cta-brown">Add Me to the Waitlist 📚</a>
+    <p class="email-note" style="margin-top:12px">Waitlist members get early access + a founding member discount.</p>
+  </div>
+</div>
+
+<!-- 1:1 COACHING WAITLIST -->
+<div class="modal-overlay" id="modal-coaching" onclick="closeOnBackdrop(event)">
+  <div class="modal-box">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal('coaching')">✕</button>
+    <span class="modal-eyebrow ey-waitlist">Limited Spots</span>
+    <div class="modal-title">1:1 Coaching Waitlist</div>
+    <div class="modal-price">Personalised support for your specific family</div>
+    <div class="modal-desc">Private coaching tailored to your kids, your flashpoints, your home. We go deep together on exactly what your family needs.</div>
+    <ul class="modal-includes">
+      <li>Weekly 1:1 sessions with Coach Jess</li>
+      <li>Tailored action plan for your family</li>
+      <li>Voice note access between sessions</li>
+      <li>Full Family Team Method program included</li>
+      <li>Ongoing support as you implement</li>
+    </ul>
+    <!-- SWAP: replace with your Kit.com coaching waitlist URL -->
+    <a href="https://coachjessparenting.kit.com/coaching-waitlist" target="_blank" rel="noopener"
+       class="modal-cta cta-sage">Join the Coaching Waitlist 🧡</a>
+    <p class="email-note" style="margin-top:12px">I'll reach out personally when spots open up.</p>
+  </div>
+</div>
+
+<!-- GROUP COHORT -->
+<div class="modal-overlay" id="modal-cohort" onclick="closeOnBackdrop(event)">
+  <div class="modal-box">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal('cohort')">✕</button>
+    <span class="modal-eyebrow ey-waitlist">Quarterly · Limited</span>
+    <div class="modal-title">Group Cohort Interest List</div>
+    <div class="modal-price">Live sessions + community — limited to 15 families</div>
+    <div class="modal-desc">Go through the Family Team Method alongside other families, with live weekly group calls, real-time problem solving, and the village model applied to your parenting journey.</div>
+    <ul class="modal-includes">
+      <li>Weekly live group coaching calls with Jess</li>
+      <li>Private community space between sessions</li>
+      <li>Role-play, scenarios, and live Q&A</li>
+      <li>Full program access included</li>
+      <li>Cohort pricing — best value option</li>
+    </ul>
+    <!-- SWAP: replace with your Kit.com cohort interest list URL -->
+    <a href="https://coachjessparenting.kit.com/cohort" target="_blank" rel="noopener"
+       class="modal-cta cta-rose">Add Me to the Interest List ✨</a>
+    <p class="email-note" style="margin-top:12px">No commitment. I'll send details when the next cohort opens.</p>
+  </div>
+</div>
+
+<!-- NEWSLETTER -->
+<div class="modal-overlay" id="modal-email" onclick="closeOnBackdrop(event)">
+  <div class="modal-box">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal('email')">✕</button>
+    <span class="modal-eyebrow ey-free">Weekly · Free</span>
+    <div class="modal-title">The Calm Home Newsletter</div>
+    <div class="modal-price">Ancient wisdom in your inbox every week</div>
+    <div class="modal-desc">One email a week. One tool, story, or insight from ancient parenting cultures — translated for your modern, beautiful, messy family. Never more than 5 minutes to read.</div>
+    <ul class="modal-includes">
+      <li>Real stories from Maya, Inuit & Hadzabe cultures</li>
+      <li>Practical tools you can use the same day</li>
+      <li>Honest reflections from a mom of 4 (twins!)</li>
+      <li>First access to new resources and offers</li>
+    </ul>
+    <!-- SWAP: replace with your Kit.com newsletter sign-up URL -->
+    <a href="https://coachjessparenting.kit.com/newsletter" target="_blank" rel="noopener"
+       class="modal-cta cta-sage">Subscribe — It's Free 💌</a>
+    <p class="email-note" style="margin-top:12px">No spam. Unsubscribe any time. You'll love it. 🌿</p>
+  </div>
+</div>
+
+
+<script>
+function openModal(id){
+  document.getElementById('modal-'+id).classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(id){
+  document.getElementById('modal-'+id).classList.remove('open');
+  document.body.style.overflow='';
+}
+function closeOnBackdrop(e){
+  if(e.target===e.currentTarget){
+    e.currentTarget.classList.remove('open');
+    document.body.style.overflow='';
+  }
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    document.querySelectorAll('.modal-overlay.open').forEach(m=>{
+      m.classList.remove('open');
+      document.body.style.overflow='';
+    });
+  }
+});
+</script>
+</body>
+</html>
